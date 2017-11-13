@@ -1,0 +1,89 @@
+So I've submitted my code to the autograder and for some reason, it's saying my code is not compiling and I don't understand why.
+When I check on intellij, there are no problems found.
+
+I've also tried logging into ssh and running make check.
+Make check seems to show that my code is compiling.
+This is what I'm getting when I run make check:
+        derby [514] ~/repo/proj3 $ make check
+        make -C graph unit
+        make[1]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/graph'
+        java -ea -cp "..:.:/home/ff/cs61b/lib/*:;..;.:/home/ff/cs61b/lib/*" graph.UnitTest
+        Time: 0.025
+        Ran 28 tests. All passed.
+        make[1]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/graph'
+        make -C make unit
+        make[1]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/make'
+        java -ea -cp "..:.:/home/ff/cs61b/lib/*:;..;.:/home/ff/cs61b/lib/*" make.UnitTest
+        Time: 0.004
+        Ran 1 tests. All passed.
+        make[1]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/make'
+        make -C trip unit
+        make[1]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/trip'
+        java -ea -cp "..:.:/home/ff/cs61b/lib/*:;..;.:/home/ff/cs61b/lib/*" trip.UnitTest
+        Time: 0.004
+        Ran 1 tests. All passed.
+        make[1]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/trip'
+        make -C graph integration
+        make[1]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/graph'
+        make -C ../testing check
+        make[2]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/testing'
+        Testing application make...
+        ** make01 PASSED.
+        ** make02 PASSED.
+        ** make03 PASSED.
+        ** make04 PASSED.
+
+        Passed all 4 tests.
+        Testing application trip...
+        ** trip01 PASSED.
+
+        Passed all 1 tests.
+        make[2]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/testing'
+        make[1]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/graph'
+        make -C make integration
+        make[1]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/make'
+        make -C ../testing make-check
+        make[2]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/testing'
+        Testing application make...
+        ** make01 PASSED.
+        ** make02 PASSED.
+        ** make03 PASSED.
+        ** make04 PASSED.
+
+        Passed all 4 tests.
+        make[2]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/testing'
+        make[1]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/make'
+        make -C trip integration
+        make[1]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/trip'
+        make -C ../testing trip-check
+        make[2]: Entering directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/testing'
+        Testing application trip...
+        ** trip01 PASSED.
+
+        Passed all 1 tests.
+        make[2]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/testing'
+        make[1]: Leaving directory `/home/cc/cs61b/fa16/class/cs61b-aze/repo/proj3/trip'
+
+However, the autograder gives me this error:
+        NOTE: submitted Thu Dec  8 21:54:00 2016, 21.9 hours late.
+
+        cd proj3; make -f /home/ff/cs61b/testing-files/proj3.mk --silent --no-print-directory default
+
+        ===== Compiling =====
+
+        make[4]: *** No rule to make target `default'.
+        make[3]: *** [default] Error 2
+
+        **** Compilation errors found.  Test ends. ****
+
+        ====================
+        make[2]: *** [compile] Error 1
+        make[1]: *** [default] Error 2
+        make: *** [all] Error 2
+
+        <<PROBLEM: One or more tests failed (terminated with non-zero exit code 512).
+
+
+
+Could it be that I changed the testing files/skeleton code in a way I wasn't supposed to?
+If not, my make package could be implemented incorrectly but I'm not sure how to address this error.
